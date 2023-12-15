@@ -125,6 +125,10 @@ public class Town
         }
     }
 
+    public String treasureHunt(){
+
+    }
+
     public String toString()
     {
         return "This nice little town is surrounded by " + terrain.getTerrainName() + ".";

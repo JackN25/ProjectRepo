@@ -140,7 +140,7 @@ public class TreasureHunter
             }
         }
         else if(choice.equals("H") || choice.equals("h")){
-            currentTown.treasureHunt();
+            currentTown.generateTreasure(Hunter G);
         }
         else if (choice.equals("L") || choice.equals("l"))
         {

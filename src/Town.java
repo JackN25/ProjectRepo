@@ -10,6 +10,10 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private int count = 0;
+    private boolean treasure1Found = false;
+    private boolean treasure2Found = false;
+    private boolean treasure3Found = false;
 
     //Constructor
     /**
@@ -125,8 +129,33 @@ public class Town
         }
     }
 
-    public String treasureHunt(){
-
+    public String generateTreasure(Hunter G){
+        int randomValue = (int)(Math.random()*5);
+        if (count > 0){
+            return "You cannot search for another treasure until you leave and go to the next town.";
+        }
+        else{
+            count++;
+            if(randomValue == 1){
+                return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found no treasure and give up.";
+            }
+            else if(randomValue == 2){
+                if(treasure1Found == true){
+                    return "You have already obtained this treasure. It has been discarded from your inventory.";
+                }
+                G.addItem
+                treasure1Found = true;
+                return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... DIAMOND SKULL!";
+            }
+            else if(randomValue == 3){
+                treasure2Found = true;
+                return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... RUBY CROWN!";
+            }
+            else{
+                treasure3Found = true;
+                return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... GOLDEN TRIDENT!";
+            }
+        }
     }
 
     public String toString()

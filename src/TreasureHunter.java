@@ -99,7 +99,7 @@ public class TreasureHunter
         Scanner scanner = new Scanner(System.in);
         String choice = "";
 
-        while (!(choice.equals("X") || choice.equals("x")))
+        while (!(choice.equals("X") || choice.equals("x")) && !(hunter.hasItemInKit("Diamond Skull") && hunter.hasItemInKit("Golden Trident") && hunter.hasItemInKit("Ruby Skull")) && !(hunter.getGold() <= 0))
         {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
@@ -117,6 +117,11 @@ public class TreasureHunter
             choice = scanner.nextLine();
             choice = choice.toUpperCase();
             processChoice(choice);
+        }
+        if (hunter.hasItemInKit("Diamond Skull") && hunter.hasItemInKit("Golden Trident") && hunter.hasItemInKit("Ruby Skull")) {
+            System.out.println("You have found all three of the most valuable treasures in this world and decide to end your journey for now...");
+        } else if (hunter.getGold() <= 0) {
+            System.out.println("You have lost all your money in a battle and you now owe your head. Your journey has ended. Maybe try not to get too overconfident next time?");
         }
     }
 
@@ -140,7 +145,7 @@ public class TreasureHunter
             }
         }
         else if(choice.equals("H") || choice.equals("h")){
-            currentTown.generateTreasure(hunter);
+            System.out.println(currentTown.generateTreasure(hunter));
         }
         else if (choice.equals("L") || choice.equals("l"))
         {

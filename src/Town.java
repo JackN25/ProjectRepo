@@ -105,7 +105,7 @@ public class Town
         }
         else
         {
-            noTroubleChance = 0.33;
+            noTroubleChance = 0;
         }
 
         if (Math.random() > noTroubleChance)
@@ -163,7 +163,7 @@ public class Town
                 }
                 treasure3Found = true;
                 G.addItem("Golden Trident");
-                return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... GOLDEN TRIDENT!";
+                return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 hours, you found the... GOLDEN TRIDENT!";
             }
         }
     }
@@ -211,5 +211,12 @@ public class Town
     {
         double rand = Math.random();
         return (rand < 0.5);
+    }
+
+    public boolean checkIfAllTreasure(){
+        if (treasure1Found && treasure2Found && treasure3Found) {
+            return true;
+        }
+        return false;
     }
 }

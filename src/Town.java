@@ -15,6 +15,8 @@ public class Town
     private boolean treasure2Found = false;
     private boolean treasure3Found = false;
 
+
+
     //Constructor
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -140,19 +142,27 @@ public class Town
                 return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found no treasure and give up.";
             }
             else if(randomValue == 2){
-                if(treasure1Found == true){
+                if(treasure1Found){
                     return "You have already obtained this treasure. It has been discarded from your inventory.";
                 }
-                G.addItem
                 treasure1Found = true;
+                G.addItem("Diamond Skull");
                 return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... DIAMOND SKULL!";
             }
             else if(randomValue == 3){
+                if (treasure2Found) {
+                    return "You have already obtained this treasure. It has been discarded from your inventory.";
+                }
                 treasure2Found = true;
+                G.addItem("Ruby Crown");
                 return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... RUBY CROWN!";
             }
             else{
+                if (treasure3Found) {
+                    return "You have already obtained this treasure. It has been discarded from your inventory.";
+                }
                 treasure3Found = true;
+                G.addItem("Golden Trident");
                 return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... GOLDEN TRIDENT!";
             }
         }

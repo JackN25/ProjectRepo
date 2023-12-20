@@ -66,7 +66,7 @@ public class TreasureHunter
         if (hardMode)
         {
             // in hard mode, you get less money back when you sell items
-            markdown = 0.5;
+            markdown = 0.15;
 
             // and the town is "tougher"
             toughness = 0.75;
@@ -132,11 +132,12 @@ public class TreasureHunter
      */
     private void processChoice(String choice)
     {
-        if (choice.equals("B") || choice.equals("b") || choice.equals("S") || choice.equals("s"))
+        choice = choice.toLowerCase();
+        if (choice.equals("b")  || choice.equals("s"))
         {
             currentTown.enterShop(choice);
         }
-        else if (choice.equals("M") || choice.equals("m"))
+        else if (choice.equals("m"))
         {
             if (currentTown.leaveTown())
             {
@@ -145,14 +146,14 @@ public class TreasureHunter
                 enterTown();
             }
         }
-        else if(choice.equals("H") || choice.equals("h")){
+        else if(choice.equals("h")){
             System.out.println(currentTown.generateTreasure(hunter));
         }
-        else if (choice.equals("L") || choice.equals("l"))
+        else if (choice.equals("l"))
         {
             currentTown.lookForTrouble();
         }
-        else if (choice.equals("X") || choice.equals("x"))
+        else if (choice.equals("x"))
         {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }

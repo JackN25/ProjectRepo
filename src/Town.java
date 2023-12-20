@@ -105,7 +105,7 @@ public class Town
         }
         else
         {
-            noTroubleChance = 0.25;
+            noTroubleChance = 0.33;
         }
 
         if (Math.random() > noTroubleChance)

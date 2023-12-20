@@ -139,7 +139,7 @@ public class Town
         else{
             count++;
             if(randomValue == 1){
-                return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found no treasure and give up.";
+                return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 hours, you found no treasure and give up.";
             }
             else if(randomValue == 2) {
                 if (TREASURE_1_FOUND) {
@@ -147,7 +147,7 @@ public class Town
                 } else {
                     TREASURE_1_FOUND= true;
                     G.addItem("Diamond Skull");
-                    return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... DIAMOND SKULL!";
+                    return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 hours, you found the... DIAMOND SKULL!";
                 }
             }
             else if(randomValue == 3) {
@@ -156,7 +156,7 @@ public class Town
                 } else {
                     TREASURE_2_FOUND = true;
                     G.addItem("Ruby Crown");
-                    return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... RUBY CROWN!";
+                    return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 hours, you found the... RUBY CROWN!";
                 }
             }
             else {

@@ -121,6 +121,7 @@ public class TreasureHunter
         if (Town.checkIfAllTreasure()) {
             System.out.println("\nYou have found all three of the most valuable treasures in this world and decide to end your journey for now...");
         } else if (hunter.getGold() <= 0) {
+            System.out.println(currentTown.getLatestNews());
             System.out.println("\nYou have lost all your money in a battle and your opponent wants your head as payment. Your journey has ended. Maybe try not to get too overconfident next time?");
         }
     }

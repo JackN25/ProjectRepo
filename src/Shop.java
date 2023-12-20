@@ -35,9 +35,11 @@ public class Shop
         Scanner scanner = new Scanner(System.in);
         if (buyOrSell.equals("B") || buyOrSell.equals("b"))
         {
+            System.out.println("----------------------------------------");
             System.out.println("Welcome to the shop! We have the finest wares in town.");
-            System.out.println("Currently we have the following items:");
+            System.out.println("Currently we have the following items:\n");
             System.out.println(inventory());
+            System.out.println("----------------------------------------");
             System.out.print("What're you lookin' to buy? ");
             String item = scanner.nextLine();
             item = item.toLowerCase();
@@ -92,6 +94,7 @@ public class Shop
         str += "Machete: " + MACHETE_COST + " gold\n";
         str += "Horse: " + HORSE_COST + " gold\n";
         str += "Boat: " + BOAT_COST + " gold\n";
+        str += "Note: If you don't want to buy anything, enter \"none\"\n";
         return str;
     }
 

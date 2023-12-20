@@ -11,9 +11,9 @@ public class Town
     private String printMessage;
     private boolean toughTown;
     private int count = 0;
-    private boolean treasure1Found = false;
-    private boolean treasure2Found = false;
-    private boolean treasure3Found = false;
+    private static boolean TREASURE_1_FOUND = false;
+    private static boolean TREASURE_2_FOUND = false;
+    private static boolean TREASURE_3_FOUND = false;
 
 
 
@@ -133,42 +133,42 @@ public class Town
 
     public String generateTreasure(Hunter G){
         int randomValue = (int)(Math.random()*5);
-        //if (count > 0){
-        //    return "You cannot search for another treasure until you leave and go to the next town.";
-        //}
-        //else{
-            //count++;
+        if (count > 0){
+            return "You cannot search for another treasure until you leave and go to the next town.";
+        }
+        else{
+            count++;
             if(randomValue == 1){
                 return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found no treasure and give up.";
             }
             else if(randomValue == 2) {
-                if (treasure1Found) {
+                if (TREASURE_1_FOUND) {
                     return "You have already obtained this treasure. It has been discarded from your inventory.";
                 } else {
-                    treasure1Found = true;
+                    TREASURE_1_FOUND= true;
                     G.addItem("Diamond Skull");
                     return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... DIAMOND SKULL!";
                 }
             }
             else if(randomValue == 3) {
-                if (treasure2Found) {
+                if (TREASURE_2_FOUND) {
                     return "You have already obtained this treasure. It has been discarded from your inventory.";
                 } else {
-                    treasure2Found = true;
+                    TREASURE_2_FOUND = true;
                     G.addItem("Ruby Crown");
                     return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 horus, you found the... RUBY CROWN!";
                 }
             }
             else {
-                if (treasure3Found) {
+                if (TREASURE_3_FOUND) {
                     return "You have already obtained this treasure. It has been discarded from your inventory.";
                 } else {
-                    treasure3Found = true;
+                    TREASURE_3_FOUND = true;
                     G.addItem("Golden Trident");
                     return "You went on a journey to look for the town's treasure. After finding the spot and digging for 3 hours, you found the... GOLDEN TRIDENT!";
                 }
             }
-       //}
+       }
     }
 
     public String toString()
@@ -216,8 +216,8 @@ public class Town
         return (rand < 0.5);
     }
 
-    public boolean checkIfAllTreasure(){
-        if (treasure1Found && treasure2Found && treasure3Found) {
+    public static  boolean checkIfAllTreasure(){
+        if (TREASURE_1_FOUND && TREASURE_2_FOUND && TREASURE_3_FOUND) {
             return true;
         }
         return false;

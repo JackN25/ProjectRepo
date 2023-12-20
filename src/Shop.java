@@ -43,20 +43,20 @@ public class Shop
             System.out.print("What're you lookin' to buy? ");
             String item = scanner.nextLine();
             item = item.toLowerCase();
-            int cost = checkMarketPrice(item, true);
-            if (cost == 0)
-            {
-                System.out.println("We ain't got none of those.");
-            }
-            else
-            {
-                System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
-                String option = scanner.nextLine();
+            if (!item.equals("none")) {
+                int cost = checkMarketPrice(item, true);
+                if (cost == 0) {
+                    System.out.println("We ain't got none of those.");
+                } else {
+                    System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
+                    String option = scanner.nextLine();
 
-                if (option.equals("y") || option.equals("Y"))
-                {
-                    buyItem(item);
+                    if (option.equals("y") || option.equals("Y")) {
+                        buyItem(item);
+                    }
                 }
+            } else {
+                System.out.println("Alright. Please make up your mind next time before you enter the shop.");
             }
         }
         else

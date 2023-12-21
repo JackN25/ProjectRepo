@@ -7,24 +7,32 @@ import java.util.Scanner;
 public class Shop
 {
     // constants
-    private static final int WATER_COST = 2;
-    private static final int ROPE_COST = 4;
-    private static final int MACHETE_COST = 6;
-    private static final int HORSE_COST = 12;
-    private static final int BOAT_COST = 20;
+    private static  int WATER_COST = 2;
+    private static  int ROPE_COST = 4;
+    private static  int MACHETE_COST = 6;
+    private static  int HORSE_COST = 12;
+    private static  int BOAT_COST = 20;
     private String mode;
     // instance variables
     private double markdown;
     private Hunter customer;
-
     //Constructor
     public Shop(double markdown, String mode)
     {
         this.markdown = markdown;
         customer = null;
         this.mode = mode;
+        halfPrice();
     }
-
+    public void halfPrice(){
+        if(mode.equalsIgnoreCase("easy")){
+           WATER_COST /= 2;
+           ROPE_COST /= 2;
+           MACHETE_COST /= 2;
+           HORSE_COST /= 2;
+           BOAT_COST /=2;
+        }
+    }
     /** method for entering the shop
      * @param hunter  the Hunter entering the shop
      * @param buyOrSell  String that determines if hunter is "B"uying or "S"elling
@@ -32,7 +40,6 @@ public class Shop
     public void enter(Hunter hunter, String buyOrSell)
     {
         customer = hunter;
-
         Scanner scanner = new Scanner(System.in);
         if (buyOrSell.equals("B") || buyOrSell.equals("b"))
         {
@@ -51,12 +58,12 @@ public class Shop
                 } else {
                     System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
                     String option = scanner.nextLine();
-
                     if (option.equals("y") || option.equals("Y")) {
                         buyItem(item);
                     }
                 }
-            } else {
+            }
+            else {
                 System.out.println("Alright. Please make up your mind next time before you enter the shop.");
             }
         }
@@ -89,8 +96,7 @@ public class Shop
      *
      * @return  the string representing the shop's items available for purchase and their prices
      */
-    public String inventory()
-    {
+    public String inventory() {
         String str = "Water: " + WATER_COST + " gold\n";
         str += "Rope: " + ROPE_COST + " gold\n";
         str += "Machete: " + MACHETE_COST + " gold\n";

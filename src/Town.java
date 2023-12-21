@@ -216,6 +216,10 @@ public class Town
      */
     private boolean checkItemBreak()
     {
+        if(mode.equalsIgnoreCase("easy")){
+            double rand = Math.random();
+            return (rand < 0.8);
+        }
         double rand = Math.random();
         return (rand < 0.5);
     }

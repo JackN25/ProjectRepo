@@ -12,16 +12,17 @@ public class Shop
     private static final int MACHETE_COST = 6;
     private static final int HORSE_COST = 12;
     private static final int BOAT_COST = 20;
-
+    private String mode;
     // instance variables
     private double markdown;
     private Hunter customer;
 
     //Constructor
-    public Shop(double markdown)
+    public Shop(double markdown, String mode)
     {
         this.markdown = markdown;
         customer = null;
+        this.mode = mode;
     }
 
     /** method for entering the shop

@@ -13,6 +13,7 @@ public class TreasureHunter
     private Hunter hunter;
     private boolean hardMode;
     private boolean easyMode;
+    private String mode;
 
     //Constructor
     /**
@@ -23,7 +24,7 @@ public class TreasureHunter
         // these will be initialized in the play method
         currentTown = null;
         hunter = null;
-        hardMode = false;
+        mode = "normal";
     }
 
     // starts the game; this is the only public method
@@ -50,14 +51,13 @@ public class TreasureHunter
         hunter = new Hunter(name, 10);
 
         System.out.print("Hard mode/Normal mode/Easy mode? (h/n/e): ");
-        String mode = scanner.nextLine();
-        mode = mode.toLowerCase();
-        if (mode.equals("h"))
-        {
-            hardMode = true;
-        }
-        else if(mode.equals("e")){
-            easyMode = true;
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("h")) {
+            mode = "hard";
+        } else if (choice.equalsIgnoreCase("e")) {
+            mode = "easy";
+        } else {
+            mode = "normal";
         }
     }
 
@@ -68,7 +68,7 @@ public class TreasureHunter
     {
         double markdown = 0.25;
         double toughness = 0.4;
-        if (hardMode)
+        if (mode.equalsIgnoreCase("hard"))
         {
             // in hard mode, you get less money back when you sell items
             markdown = 0.15;
@@ -76,7 +76,7 @@ public class TreasureHunter
             // and the town is "tougher"
             toughness = 0.75;
         }
-        else if(easyMode){
+        else if(mode.equalsIgnoreCase("easy")){
             markdown = .75;
             toughness = .1;
         }
@@ -89,7 +89,7 @@ public class TreasureHunter
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
         // object in other methods of this class
-        currentTown = new Town(shop, toughness);
+        currentTown = new Town(shop, mode, toughness);
 
         // calling the hunterArrives method, which takes the Hunter
         // as a parameter; note this also could have been done in the

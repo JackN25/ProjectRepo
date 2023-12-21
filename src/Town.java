@@ -10,6 +10,7 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private String mode;
     private int count = 0;
     private static boolean TREASURE_1_FOUND = false;
     private static boolean TREASURE_2_FOUND = false;
@@ -23,7 +24,7 @@ public class Town
      * @param s The town's shoppe.
      * @param t The surrounding terrain.
      */
-    public Town(Shop shop, double toughness)
+    public Town(Shop shop, String mode, double toughness)
     {
         this.shop = shop;
         this.terrain = getNewTerrain();
@@ -35,6 +36,7 @@ public class Town
         printMessage = "";
 
         // higher toughness = more likely to be a tough town
+        this.mode = mode;
         toughTown = (Math.random() < toughness);
     }
 
@@ -99,13 +101,15 @@ public class Town
     public void lookForTrouble()
     {
         double noTroubleChance;
-        if (toughTown)
+        if (mode.equals("hard"))
         {
             noTroubleChance = 0.66;
         }
-        else
+        else if (mode.equals("normal"))
         {
             noTroubleChance = 0.33;
+        } else {
+            noTroubleChance = 0.1;
         }
 
         if (Math.random() > noTroubleChance)
@@ -115,7 +119,7 @@ public class Town
         else
         {
             printMessage = "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
-            int goldDiff = (int)(Math.random() * 10) + 1;
+            int goldDiff = (int)((Math.random() * 10) * 1 - noTroubleChance) + 1;
             if (Math.random() > noTroubleChance)
             {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";

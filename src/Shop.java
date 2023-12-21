@@ -22,15 +22,28 @@ public class Shop
         this.markdown = markdown;
         customer = null;
         this.mode = mode;
-        halfPrice();
+        if (mode.equalsIgnoreCase("easy")) {
+            halfPrice();
+        } else if (mode.equalsIgnoreCase("cheat")) {
+            cheatPrices();
+
+        }
     }
     public void halfPrice(){
-        if(mode.equalsIgnoreCase("easy")){
            WATER_COST /= 2;
            ROPE_COST /= 2;
            MACHETE_COST /= 2;
            HORSE_COST /= 2;
            BOAT_COST /=2;
+    }
+
+    public void cheatPrices(){
+        if(mode.equalsIgnoreCase("cheat")) {
+            WATER_COST = 1;
+            ROPE_COST = 1;
+            MACHETE_COST = 1;
+            HORSE_COST = 1;
+            BOAT_COST = 1;
         }
     }
     /** method for entering the shop

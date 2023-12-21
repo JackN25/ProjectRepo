@@ -56,6 +56,8 @@ public class TreasureHunter
             mode = "hard";
         } else if (choice.equalsIgnoreCase("e")) {
             mode = "easy";
+        } else if (choice.equalsIgnoreCase("cheat")){
+            mode = "cheat";
         } else {
             mode = "normal";
         }
@@ -79,6 +81,9 @@ public class TreasureHunter
         else if(mode.equalsIgnoreCase("easy")){
             markdown = .75;
             toughness = .1;
+        } else if (mode.equals("cheat")) {
+            markdown = 100;
+            toughness = 0;
         }
 
         // note that we don't need to access the Shop object

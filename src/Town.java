@@ -108,8 +108,11 @@ public class Town
         else if (mode.equals("normal"))
         {
             noTroubleChance = 0.33;
+        } else if (mode.equals("cheat")){
+            noTroubleChance = 0;
         } else {
             noTroubleChance = 0.1;
+
         }
 
         if (Math.random() < noTroubleChance)
@@ -119,7 +122,12 @@ public class Town
         else
         {
             printMessage = "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
-            int goldDiff = (int)((Math.random() * 10) * 1 - noTroubleChance) + 1;
+            int goldDiff;
+            if (!mode.equals("cheat")) {
+                goldDiff = (int) ((Math.random() * 10) * 1 - noTroubleChance) + 1;
+            } else {
+                goldDiff = 100;
+            }
             if (Math.random() > noTroubleChance)
             {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
